@@ -83,7 +83,7 @@ DATABASES = {
 
 # Fallback to SQLite if PostgreSQL credentials are not provided or are placeholder values (e.g. RENDER_DB_HOST)
 db_host = config('DB_HOST', default='').strip()
-if not db_host or db_host == 'RENDER_DB_HOST' or 'placeholder' in db_host.lower():
+if not db_host or 'render_db' in db_host.lower() or 'placeholder' in db_host.lower():
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
