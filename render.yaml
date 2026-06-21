@@ -5,8 +5,8 @@ services:
     pythonVersion: 3.12
     plan: free
     branch: main
-    buildCommand: pip install -r backend/requirements.txt && python3 backend/manage.py collectstatic --noinput
-    startCommand: python3 backend/manage.py migrate --noinput && gunicorn backend.inventory_system.wsgi:application --bind 0.0.0.0:$PORT
+    buildCommand: pip install -r backend/requirements.txt && .venv/bin/python backend/manage.py collectstatic --noinput
+    startCommand: .venv/bin/python backend/manage.py migrate --noinput && .venv/bin/gunicorn backend.inventory_system.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: inventory_system.settings_production
